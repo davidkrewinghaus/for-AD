@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="style.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.0/jquery.validate.min.js"></script>
+</head>
+<body>
+<form id="myform" name="theform" class="group" action="http://northeastern.edu" method="POST">
+	<fieldset >
+		<span id="formerror" class="error"></span>
+      <div class="text">	
+        <label for="myname">Name </label>
+        <input type="text" name="myname" id="myname" title="Please enter your name" pattern="[A-Za-z ]+ [A-Za-z ]+" autofocus required placeholder="First Last" class="text"/>
+      </div>
+      <div class="text">	
+        <label for="myname">Username </label>
+        <input type="text" name="username" id="username" title="Please select a username" pattern="[A-Za-z ]+ " autofocus required  class="text"/>
+      </div>      
+      <div class="text">
+        <label for="mypassword">Password</label>
+        <input type="password" name="mypassword" id="mypassword" class="text"/>
+      </div>
+      <div class="text">
+        <label for="mypasswordconf"><span>Confirm </span>Password</label>
+        <input type="password" name="mypasswordconf" id="mypasswordconf" class="text"/>
+      </div>
+      <div class="text">      
+        <label for="myemail">Email </label>
+        <input type="email" name="myemail" required id="myemail" autocomplete="off" class="text"/>
+      </div>        
+      <div class="checkbox">
+        <input type="checkbox" id="agreeTOS" name="agreeTOS" required value="no" />
+        <label for="agreeTOS" class="tos">Do you agree to our Terms of Service?</label>
+      </div>
+
+
+<button type="submit">Sign up</button>
+
+	</fieldset>
+
+</form>
+<script>
+	$(document).ready(function() {
+		$("#myform").validate({
+				"rules" : {
+					"mypassword": {
+						"minlength" : 6,
+						"required" : true },
+					"mypasswordconf": {
+						"equalTo" : "#mypassword"}
+				} //rules
+		}); //validate
+	}); //document ready
+</script>
+</body>
+</html>
